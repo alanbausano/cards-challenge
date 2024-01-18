@@ -1,7 +1,7 @@
 import { notification } from 'antd'
 import { ApiError, User } from '../../types/types'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
-import { getUsers, editUser } from './api'
+import { getUsers, editUser, postUser } from './api'
 import { QueryKeys } from '../../querKeys/queryKeysEnum'
 
 export const useUsers = () => {
@@ -12,12 +12,32 @@ export const useUsers = () => {
     })
   }
 
+  const onUpdateSuccess = () => {
+    notification.success({ message: 'User updated successfully' })
+  }
+
+  const onPostSuccess = () => {
+    notification.success({ message: 'User created successfully' })
+  }
+
   const { data, isFetching } = useQuery([QueryKeys.Users], getUsers, {
-    onError: () => onError
+    onError
   })
 
-  const { mutate } = useMutation(editUser, {
-    onSuccess: () => queryClient.invalidateQueries([QueryKeys.Users])
+  const { mutate: updatePatient } = useMutation(editUser, {
+    onSuccess: () => {
+      queryClient.invalidateQueries([QueryKeys.Users])
+      onUpdateSuccess()
+    },
+    onError
+  })
+
+  const { mutate: postPatient } = useMutation(postUser, {
+    onSuccess: () => {
+      queryClient.invalidateQueries([QueryKeys.Users])
+      onPostSuccess()
+    },
+    onError
   })
 
   const users = data?.map((data: User) => data)
@@ -25,6 +45,7 @@ export const useUsers = () => {
   return {
     users,
     isFetching,
-    postNewPatient: mutate
+    updatePatient,
+    postPatient
   }
 }

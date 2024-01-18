@@ -4,10 +4,12 @@ export type UsersResponse = {
   avatar: string
   description: string
   website: string
-  id: number
+  id?: number
 }
 
 export type User = Omit<UsersResponse, 'createdAt'>
+
+export type UserPayload = Omit<UsersResponse, 'createdAt' | 'avatar'>
 
 export interface ApiError {
   response: {

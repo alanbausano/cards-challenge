@@ -1,20 +1,34 @@
 import { Avatar, Card, CollapseProps, Skeleton, Typography } from 'antd'
-import { type FC } from 'react'
+import { Dispatch, SetStateAction, type FC } from 'react'
 import { WebsiteTypography } from './Typography'
 import { CollapseDescription } from './Collapse'
 import { StyledWebsiteRow } from '../styles/styledComponents'
 import { EditButton } from './Button'
+import { UserPayload } from '../types/types'
 
 interface IProps {
   name: string
   avatar: string
   description: string
   website: string
-  id: number
+  id?: number
   isLoading: boolean
+  setIsEdit: Dispatch<SetStateAction<boolean>>
+  setIsOpen: Dispatch<SetStateAction<boolean>>
+  setInitialValues: Dispatch<SetStateAction<UserPayload>>
 }
 
-export const UserCard: FC<IProps> = ({ name, avatar, description, website, isLoading }) => {
+export const UserCard: FC<IProps> = ({
+  id,
+  name,
+  avatar,
+  description,
+  website,
+  isLoading,
+  setIsEdit,
+  setIsOpen,
+  setInitialValues
+}) => {
   const items: CollapseProps['items'] = [
     {
       key: '1',
@@ -24,7 +38,14 @@ export const UserCard: FC<IProps> = ({ name, avatar, description, website, isLoa
   ]
 
   const handleEdit = () => {
-    console.log('edit')
+    setIsEdit(true)
+    setIsOpen(true)
+    setInitialValues({
+      id,
+      name,
+      description,
+      website
+    })
   }
 
   return (

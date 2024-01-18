@@ -7,9 +7,21 @@ export const getUsers = async () => {
   return response.data
 }
 
-export const editUser = async ({ id, description }: { id: number; description: string }) => {
+export const editUser = async ({
+  id,
+  name,
+  description,
+  website
+}: {
+  id: number
+  name: string
+  description: string
+  website: string
+}) => {
   const response = await axios.put(`${import.meta.env.VITE_API_URL}/${id}`, {
-    description
+    name,
+    description,
+    website
   })
 
   return response.data
@@ -17,7 +29,7 @@ export const editUser = async ({ id, description }: { id: number; description: s
 
 export const postUser = async (user: User) => {
   const response = await axios.post(`${import.meta.env.VITE_API_URL}`, {
-    user
+    ...user
   })
 
   return response.data
