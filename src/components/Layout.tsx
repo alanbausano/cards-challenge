@@ -1,17 +1,31 @@
-import { Row, Col } from 'antd'
+import { useUsers } from '../hooks/useUsers'
+import { UserCard } from './UserCard'
+import { StyledCol, StyledRow } from '../styles/styledComponents'
+import { StickyButton } from './StickyButton'
+import { Row } from 'antd'
 
 export const Layout = () => {
+  const { users, isFetching } = useUsers()
+
   return (
-    <Row>
-      <Col xs={24} xl={8}>
-        Col
-      </Col>
-      <Col xs={24} xl={8}>
-        Col
-      </Col>
-      <Col xs={24} xl={8}>
-        Col
-      </Col>
-    </Row>
+    <>
+      <Row justify={'center'}>
+        <StickyButton />
+      </Row>
+      <StyledRow justify="space-around">
+        {users?.map(user => (
+          <StyledCol key={user?.id} lg={7} xs={24}>
+            <UserCard
+              isLoading={isFetching}
+              id={user?.id}
+              name={user?.name}
+              description={user?.description}
+              avatar={user?.avatar}
+              website={user?.website}
+            />
+          </StyledCol>
+        ))}
+      </StyledRow>
+    </>
   )
 }

@@ -7,6 +7,8 @@ export type UsersResponse = {
   id: number
 }
 
+export type User = Omit<UsersResponse, 'createdAt'>
+
 export interface ApiError {
   response: {
     data: {
