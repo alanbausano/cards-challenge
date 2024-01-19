@@ -10,6 +10,7 @@ React - TypeScript
 AntDesign, styled-components, React Query, Axios.
 
 ## To run locally:
+### Create .env file in the root folder, declaring the VITE_API_URL variable with its corresponding API url.
 ### Install dependencies with npm and run start command:
 
 ```
