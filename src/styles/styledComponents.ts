@@ -10,7 +10,8 @@ export const StyledRow = styled(Row)`
 `
 
 export const StyledCol = styled(Col)`
-  margin: 3px;
+  width: 30px;
+  margin: 4px;
 `
 export const StyledCollapse = styled(Collapse)`
   margin-top: 20px;

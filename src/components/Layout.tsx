@@ -28,7 +28,7 @@ export const Layout = () => {
       ) : null}
       <StyledRow justify="space-around">
         {users?.map(user => (
-          <StyledCol key={user?.id} lg={7} xs={24}>
+          <StyledCol key={user?.id} lg={7} xs={24} md={10}>
             <UserCard
               isLoading={isFetching}
               id={user?.id}
