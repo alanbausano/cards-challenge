@@ -1,30 +1,18 @@
-# React + TypeScript + Vite
+## Project info
+#### Front-end challenge - Cards UI.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+#### This tool displays several patients/info in a responsive UI, each one in a Card component, which can be edited. Also the user can add add more patients (all through a form, which is presented in a modal)
 
-Currently, two official plugins are available:
+## Front technologies
+React - TypeScript
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Libraries
+AntDesign, styled-components, React Query, Axios.
 
-## Expanding the ESLint configuration
+## To run locally:
+### Install dependencies with npm and run start command:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+$ npm install
+$ npm start
+```
